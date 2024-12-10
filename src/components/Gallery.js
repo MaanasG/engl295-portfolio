@@ -114,58 +114,86 @@ const Gallery = () => {
 
   useEffect(() => {
     const track = trackRef.current;
-
-    const handleMouseDown = (e) => {
-      setMouseDownAt(e.clientX);
+  
+    const handleStart = (e) => {
+      // Prevent default to stop unwanted scrolling
+      e.preventDefault();
+      
+      // Support both mouse and touch events
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      setMouseDownAt(clientX);
     };
-
-    const handleMouseUp = () => {
+  
+    const handleEnd = (e) => {
+      // Prevent default to stop unwanted scrolling
+      e.preventDefault();
+      
       setMouseDownAt(0);
       setPrevPercentage(percentage);
     };
-
-    const handleMouseMove = (e) => {
+  
+    const handleMove = (e) => {
+      // Prevent default to stop unwanted scrolling
+      e.preventDefault();
+      
+      // Support both mouse and touch events
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      
       if (mouseDownAt === 0) return;
     
-      const mouseDelta = mouseDownAt - e.clientX;
+      const mouseDelta = mouseDownAt - clientX;
       const maxDelta = window.innerWidth / 2;
       const newPercentage = (mouseDelta / maxDelta) * -100;
     
-      // Calculate the maximum scroll percentage based on the number of images
       const imageWidth = track.querySelector('.image').offsetWidth;
-      const trackWidth = track.offsetWidth;
-      const windowWidth = window.innerWidth;
-    
-      // Limit the scroll so that the last image doesn't completely leave the screen
-      const maxNegativePercentage = -((imageFileNames.length - 1) * (imageWidth + 32)); // 32 is the gap between images
+      const maxNegativePercentage = -((imageFileNames.length - 1) * (imageWidth + 32));
       const nextPercentage = Math.max(
         Math.min(prevPercentage + newPercentage, 0), 
         maxNegativePercentage
       );
     
       setPercentage(nextPercentage);
-      track.animate(
-        { transform: `translate(${nextPercentage}%, -50%)` },
-        { duration: 1200, fill: "forwards" }
-      );
-    
-      for (const image of track.getElementsByClassName("image")) {
-        image.animate(
-          { objectPosition: `${-nextPercentage * .1}% 50%` }, // Change to `-nextPercentage` for leftward movement
+      
+      // Use requestAnimationFrame for smoother animations
+      requestAnimationFrame(() => {
+        track.animate(
+          { transform: `translate(${nextPercentage}%, -50%)` },
           { duration: 1200, fill: "forwards" }
         );
-      }
+      
+        for (const image of track.getElementsByClassName("image")) {
+          image.animate(
+            { objectPosition: `${-nextPercentage * .1}% 50%` },
+            { duration: 1200, fill: "forwards" }
+          );
+        }
+      });
     };
+  
+    // Different approach to event listeners
+    const trackElement = track;
     
-
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
-    window.addEventListener('mousemove', handleMouseMove);
-
+    trackElement.addEventListener('mousedown', handleStart);
+    trackElement.addEventListener('mouseleave', handleEnd);
+    trackElement.addEventListener('mouseup', handleEnd);
+    trackElement.addEventListener('mousemove', handleMove);
+  
+    // Touch events
+    trackElement.addEventListener('touchstart', handleStart, { passive: false });
+    trackElement.addEventListener('touchend', handleEnd, { passive: false });
+    trackElement.addEventListener('touchcancel', handleEnd, { passive: false });
+    trackElement.addEventListener('touchmove', handleMove, { passive: false });
+  
     return () => {
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('mousemove', handleMouseMove);
+      // Remove all event listeners
+      trackElement.removeEventListener('mousedown', handleStart);
+      trackElement.removeEventListener('mouseleave', handleEnd);
+      trackElement.removeEventListener('mouseup', handleEnd);
+      trackElement.removeEventListener('mousemove', handleMove);
+      trackElement.removeEventListener('touchstart', handleStart);
+      trackElement.removeEventListener('touchend', handleEnd);
+      trackElement.removeEventListener('touchcancel', handleEnd);
+      trackElement.removeEventListener('touchmove', handleMove);
     };
   }, [mouseDownAt, prevPercentage, percentage, imageFileNames.length]);
 
