@@ -163,37 +163,33 @@ const Gallery = () => {
       
         for (const image of track.getElementsByClassName("image")) {
           image.animate(
-            { objectPosition: `${-nextPercentage * .1}% 50%` },
+            { objectPosition: `${-nextPercentage * .2}% 50%` },
             { duration: 1200, fill: "forwards" }
           );
         }
       });
     };
   
-    // Different approach to event listeners
-    const trackElement = track;
-    
-    trackElement.addEventListener('mousedown', handleStart);
-    trackElement.addEventListener('mouseleave', handleEnd);
-    trackElement.addEventListener('mouseup', handleEnd);
-    trackElement.addEventListener('mousemove', handleMove);
+    // Attach listeners to window for full-screen dragging
+    window.addEventListener('mousedown', handleStart);
+    window.addEventListener('mouseup', handleEnd);
+    window.addEventListener('mousemove', handleMove);
   
     // Touch events
-    trackElement.addEventListener('touchstart', handleStart, { passive: false });
-    trackElement.addEventListener('touchend', handleEnd, { passive: false });
-    trackElement.addEventListener('touchcancel', handleEnd, { passive: false });
-    trackElement.addEventListener('touchmove', handleMove, { passive: false });
+    window.addEventListener('touchstart', handleStart, { passive: false });
+    window.addEventListener('touchend', handleEnd, { passive: false });
+    window.addEventListener('touchcancel', handleEnd, { passive: false });
+    window.addEventListener('touchmove', handleMove, { passive: false });
   
     return () => {
       // Remove all event listeners
-      trackElement.removeEventListener('mousedown', handleStart);
-      trackElement.removeEventListener('mouseleave', handleEnd);
-      trackElement.removeEventListener('mouseup', handleEnd);
-      trackElement.removeEventListener('mousemove', handleMove);
-      trackElement.removeEventListener('touchstart', handleStart);
-      trackElement.removeEventListener('touchend', handleEnd);
-      trackElement.removeEventListener('touchcancel', handleEnd);
-      trackElement.removeEventListener('touchmove', handleMove);
+      window.removeEventListener('mousedown', handleStart);
+      window.removeEventListener('mouseup', handleEnd);
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('touchstart', handleStart);
+      window.removeEventListener('touchend', handleEnd);
+      window.removeEventListener('touchcancel', handleEnd);
+      window.removeEventListener('touchmove', handleMove);
     };
   }, [mouseDownAt, prevPercentage, percentage, imageFileNames.length]);
 
