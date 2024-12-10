@@ -23,7 +23,7 @@ const blogPosts = {
     Tasked with showcasing the digital storytelling capabilities of this site, we gathered data and examples of 
     developers using CodePen to create digital art and work. We quickly learned that this site was geared towards 
     developers with strong foundations in front-end development, specifically in languages such as HTML, CSS, SCSS,
-    JS, and more.
+    JS, and more. 
 
     This presentation was made in Google Slides.`,
     date: 'October 30th, 2024'
@@ -31,22 +31,23 @@ const blogPosts = {
 
   'geryonfruitbowl.png': {
     title: 'Hypertext Assignment - Fruit Bowl',
-    content: `This website reimagines Chapter XII, of Anne Carson's Autobiography of Red, 
-    Fruit Bowl.
+    content: `This website reimagines Chapter XII of Anne Carson's Autobiography of Red, Fruit Bowl.
 
-    This project plays on the main character Geryon's deliberation over having no purpose in life,
-    and how the fruit bowl serves as an analogy for this feeling. 
-    
-    The website itself is broken into several segments of stanzas, each typed in a certain color
-    over a background to reflect the theme or tone of each section. Each of these segments
-    are accomponied by an illustration that represents the section. This project also makes use 
-    of various hyperlinks to illustrate key themes in the text; each of these hyperlinks connect to a modern
-    reference, that place the story in a modern setting. All together, these elements create a textually
-    and visually creative interpretation of this Greek mythology retelling.
+    This project plays on the main character Geryon's deliberation over having no purpose in life, and how the 
+    fruitbowl that Geryon plays with serves as an analogy for this feeling. The text describes various feelings 
+    of longing and depression, each characterized by a specific event that Geryon remembers from his childhood.
 
-    This website was built using React.js, and several of the images were generated using DALL-E 3 AI.
-    
-    Access here: https://geryon-fruitbowl-app-b2fk.vercel.app/`,
+    My goal was to reimagine these tiny scenes and create an immersive experience that walks the audience through Geryon's description of his emotions.
+    The website itself is broken into several segments, each containing a couple lines from the text typed in a certain color
+    over a monochromatic background to reflect the theme or tone of each section. Each of these 
+    are also accomponied by an illustration that represents the section. This project makes use 
+    of various hyperlinks to describe key themes in the text; each of these hyperlinks connect to a modern
+    reference that helps place the story in a modern setting. All together, these elements create a textually
+    and visually contemporary interpretation of this Greek mythology retelling. 
+
+    This website was built using React.js, and several of the images were generated using DALL-E 3 AI. 
+
+    Access here: https://geryon-fruitbowl-app-b2fk.vercel.app/ `,
     date: 'October 2nd, 2024'
   },
 
@@ -56,18 +57,22 @@ const blogPosts = {
     builds a narrative around the interests of the user using AI.
 
     The base idea of this project was to create a form, consisting of various questions that represent
-    decisions that comptuer science majors make as a job applicant, student, and perso n as a whole. Based on
+    decisions that computer science majors make as a job applicant, student, and person as a whole. Based on
     the answers of the user, our form returned a score representing their career, be it as a successful software
     engineer, tech startup founder, or major switcher. However, we felt this would have been rather straightforward;
-    to add some depth to the questions, we created question templates and used ChatGPT's API to fill in the content
-    based on the given interests from the user; tailoring these questions created a much more engaging storyline.
+    we didn't want our user simply choosing the answer choices that made the most sense, since there is often a lot 
+    more to these decisions than just aligning them with our chosen career path.
+    To add some depth to the questions, we created question templates and used ChatGPT's API to fill in the content
+    based on the interests received from the user; this way, we were able to tailor the questions to create a much more engaging
+    and personal storyline.
 
     Our idea was based primarily on 3 coinciding pieces of data that our group found: increasing computer science degree
-    seeking students, increased usage of AI, and declining CS major job conversion. As CS students ourselves,
-    we felt that this topic was very relevant, but the numbers expressed very little of the full story. There are several
-    factors and decisions that go into a student's success, and success is defined in a variety of different ways, not just
-    through getting a good CS internship or job. For this reason, we sprinkled several graphs, quotes, and pictures into
-    our quiz to show how multifaceted this discipline is.
+    seeking students, increased usage of AI, and declining CS-major job conversion rates. As CS students ourselves,
+    we felt that this topic hit very close to home, but the statistics we found represented only one dimension of the full story. 
+    There are several factors and decisions that go into a student's success, which can be defined in a variety of different ways, 
+    not just as landing a prestigious job. For this reason, we sprinkled several graphs, quotes, and pictures into
+    our quiz describing other related information, such as ratings of happiness and self-doubt, as well as anecdotal experience
+    from CS majors on campus.
 
     This project was built with React.js, and uses ChatGPT's API for content generation. `,
     date: 'November 13th, 2024'
@@ -82,21 +87,19 @@ const blogPosts = {
     getting into such a country, as well as the overarching prejudice and fear that is directed towards foreigners 
     upon entry to their country. This manifests in descriptions of the coldness of the officers, as well as the airport as a whole.
 
-    My text organization idea was mainly based on other poem and story-based line-by-line explanation sites, 
-    which break up texts into several sections, each revealing a description of the text above. Similarly, 
-    I chose to break up and analyze each stanza of the project one by one, and wrote contrary perspective—be it
-    from a TSA agent, onlooker, or police officer—that offer the same level of negativity and prejudice as the author.
+    My idea for organizing the text was primarily based on poem and story-based translation sites, 
+    which break up texts into several sections, and have a corresponding button under each block of text.
+    Each of these buttons, when clicked, revealed a description of the text above. Similarly, 
+    I chose to break up this poem by stanza, and created a toggle-able dropdown blurb, where I wrote contrary perspectives—be it
+    from a TSA agent, onlooker, or police officer—that offer the same level of negativity and prejudice as the author, just from the other side.
     The site also includes various images of airport security news or breaches, representing the content of each stanza.
 
-
     This project was built with React.js and TailwindCSS.
-    
+
     Access here: https://maanasg.github.io/engl-remix-project/`,
     date: 'November 24th, 2024'
   },
 
-
-  // Add more blog post entries for other images
 };
 
 function importAll(r) {
