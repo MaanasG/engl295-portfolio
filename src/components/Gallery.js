@@ -12,7 +12,9 @@ const blogPosts = {
     I decided to apply my UI/UX skills to develop websites and blogs to supplement the interpretations
     I came up with for each project. 
 
-    I hope you enjoy my work!`,
+    I hope you enjoy my work!
+
+    Github repository: https://github.com/MaanasG/engl295-portfolio`,
     date: 'December 10th, 2024'
   },
 
