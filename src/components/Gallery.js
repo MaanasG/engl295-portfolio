@@ -92,7 +92,7 @@ const blogPosts = {
     This project was built with React.js and TailwindCSS.
     
     Access here: https://maanasg.github.io/engl-remix-project/`,
-    date: 'Novemebr 24th, 2024'
+    date: 'November 24th, 2024'
   },
 
 

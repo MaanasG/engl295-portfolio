@@ -8,7 +8,9 @@ import Gallery from './components/Gallery.js';
 function App() {
   
   return (
-    <Gallery />
+    <div className="overflow-hidden h-screen w-screen">
+      <Gallery />
+    </div>
   );
 }
 
